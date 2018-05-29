@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import FlipMove from "react-flip-move";
 
 class Items extends Component {
 
@@ -25,7 +26,9 @@ class Items extends Component {
 
     return (
       <ul className="theList">
+        <FlipMove>
           {listItems}
+        </FlipMove>
       </ul>
     );
   }

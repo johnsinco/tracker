@@ -34,8 +34,16 @@ class Task extends Component {
   markDone(key) {
     var updatedItems = this.state.items.map(function (item) {
       if(item.key === key) {
-        item.done = !item.done
+        if(item.done == true) {
+          item.done = false;
+          item.key = Date.now();
+        } else {
+          item.done = true;
+          item.key =  10 * item.key;
+        }
       }
+      console.log(item);
+
       return item;
     });
     this.setState((prevState) => {
