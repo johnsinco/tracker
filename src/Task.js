@@ -66,6 +66,7 @@ class Task extends Component {
         }
         console.log('start doing');
       }
+      return item;
     });
     this.setState(() => {return {items: updatedItems}});
   }
