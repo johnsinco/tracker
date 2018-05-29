@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import FlipMove from "react-flip-move";
 import Button from 'react-bootstrap/lib/Button';
+import  Timer from 'react-time-counter'
 
 
 class Items extends Component {
@@ -14,12 +15,19 @@ class Items extends Component {
     this.props.markDone(key);
   }
 
+  startTimer(key) {
+    this.props.toggleDoing(key);
+  }
+
   createTasks(item) {
-    return <li onClick={() => this.markDone(item.key)}
+    return <li
               key={item.key}>
                 {item.text}
                 {item.done && <span>&nbsp; &#9989;</span>}
-                <Button>Start</Button>
+                <Button bsSize="small">Start</Button>
+                <Button bsSize="small" onClick={() => this.stopTimer(item.key)}>Stop</Button>
+                <Button bsSize="small" onClick={() => this.markDone(item.key)}>Done</Button>
+                <Timer stopHours={1} />
            </li>
   }
 

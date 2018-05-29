@@ -18,7 +18,8 @@ class Task extends Component {
       var newItem = {
         text: this._inputElement.value,
         key: Date.now(),
-        done: false
+        done: false,
+        doing: false
       };
       this.setState((prevState) => {
         return {
@@ -51,6 +52,20 @@ class Task extends Component {
         items: updatedItems
       };
     });
+  }
+
+  toggleDoing(key) {
+    var updatedItems = this.state.items.map(function (item) {
+      if(item.key === key) {
+        item.doing = !item.doing;
+        if(item.doing) {
+          item.startTime = Date.now();
+        } else {
+          item.stopTime = Date.now();
+        }
+      }
+    });
+    this.setState(() => {return {items: updatedItems}});
   }
 
   render() {

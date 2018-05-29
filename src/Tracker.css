@@ -39,3 +39,6 @@
 ul.theList {
   padding: 0;
 }
+.btn {
+  float: right;
+}
