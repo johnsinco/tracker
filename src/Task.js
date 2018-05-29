@@ -30,7 +30,6 @@ class Task extends Component {
       });
       this._inputElement.value = "";
     }
-    console.log(this.state.items);
     event.preventDefault();
   }
 
@@ -66,9 +65,8 @@ class Task extends Component {
           item.stopTime = Date.now();
           var spent = new Date(null);
           spent.setSeconds((item.stopTime - item.startTime)/1000); // specify value for SECONDS here
-          item.timeSpent = spent.toISOString().substr(11, 8);
+          item.timeSpent = spent.toTimeString().substr(3, 5);
         }
-        console.log('start doing');
       }
       return item;
     });
