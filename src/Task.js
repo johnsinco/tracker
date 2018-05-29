@@ -18,7 +18,7 @@ class Task extends Component {
       var newItem = {
         text: this._inputElement.value,
         key: Date.now(),
-        done: false
+        done: true
       };
       this.setState((prevState) => {
         return {
@@ -32,16 +32,17 @@ class Task extends Component {
   }
 
   markDone(key) {
-    var filteredItems = this.state.items.filter(function (item) {
-      return (item.key == key);
+    var updatedItems = this.state.items.map(function (item) {
+      if(item.key === key) {
+        item.done = !item.done
+      }
+      return item;
     });
-
-    filteredItems[0].done = true;
-    console.log(filteredItems);
-
-    // this.setState({
-    //   items: filteredItems
-    // });
+    this.setState((prevState) => {
+      return {
+        items: updatedItems
+      };
+    });
   }
 
   render() {

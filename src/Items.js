@@ -15,7 +15,7 @@ class Items extends Component {
     return <li onClick={() => this.markDone(item.key)}
               key={item.key}>
                 {item.text}
-                {item.done && <span>&#9989;</span>}
+                {item.done && <span>&nbsp; &#9989;</span>}
            </li>
   }
 
