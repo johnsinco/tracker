@@ -64,7 +64,9 @@ class Task extends Component {
           item.startTime = Date.now();
         } else {
           item.stopTime = Date.now();
-          item.timeSpent = (item.stopTime - item.startTime)/1000;
+          var spent = new Date(null);
+          spent.setSeconds((item.stopTime - item.startTime)/1000); // specify value for SECONDS here
+          item.timeSpent = spent.toISOString().substr(11, 8);
         }
         console.log('start doing');
       }
