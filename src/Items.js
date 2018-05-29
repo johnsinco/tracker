@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import FlipMove from "react-flip-move";
+import Button from 'react-bootstrap/lib/Button';
+
 
 class Items extends Component {
 
@@ -17,6 +19,7 @@ class Items extends Component {
               key={item.key}>
                 {item.text}
                 {item.done && <span>&nbsp; &#9989;</span>}
+                <Button>Start</Button>
            </li>
   }
 

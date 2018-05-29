@@ -18,7 +18,7 @@ class Task extends Component {
       var newItem = {
         text: this._inputElement.value,
         key: Date.now(),
-        done: true
+        done: false
       };
       this.setState((prevState) => {
         return {
