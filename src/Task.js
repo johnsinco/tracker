@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Items from './Items';
+import './Tracker.css';
 
 class Task extends Component {
 
@@ -9,13 +10,15 @@ class Task extends Component {
       items: []  //TODO add to local
     }
     this.addItem = this.addItem.bind(this);
+    this.markDone = this.markDone.bind(this);
   }
 
   addItem(event) {
     if (this._inputElement.value !== "") {
       var newItem = {
         text: this._inputElement.value,
-        key: Date.now()
+        key: Date.now(),
+        done: false
       };
       this.setState((prevState) => {
         return {
@@ -26,6 +29,19 @@ class Task extends Component {
     }
     console.log(this.state.items);
     event.preventDefault();
+  }
+
+  markDone(key) {
+    var filteredItems = this.state.items.filter(function (item) {
+      return (item.key == key);
+    });
+
+    filteredItems[0].done = true;
+    console.log(filteredItems);
+
+    // this.setState({
+    //   items: filteredItems
+    // });
   }
 
   render() {
@@ -39,7 +55,8 @@ class Task extends Component {
             <button type="submit">add</button>
           </form>
         </div>
-        <Items entries={this.state.items} />
+        <Items entries={this.state.items}
+                markDone={this.markDone}/>
       </div>
     );
   }

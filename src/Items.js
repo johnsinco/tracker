@@ -1,8 +1,22 @@
 import React, { Component } from "react";
 
 class Items extends Component {
+
+  constructor(props) {
+    super(props);
+    this.createTasks = this.createTasks.bind(this);
+  }
+
+  markDone(key) {
+    this.props.markDone(key);
+  }
+
   createTasks(item) {
-    return <li key={item.key}>{item.text}</li>
+    return <li onClick={() => this.markDone(item.key)}
+              key={item.key}>
+                {item.text}
+                {item.done && <span>&#9989;</span>}
+           </li>
   }
 
   render() {
