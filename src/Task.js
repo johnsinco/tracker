@@ -20,7 +20,8 @@ class Task extends Component {
         text: this._inputElement.value,
         key: Date.now(),
         done: false,
-        doing: false
+        doing: false,
+        timeSpent: 0
       };
       this.setState((prevState) => {
         return {
@@ -63,6 +64,7 @@ class Task extends Component {
           item.startTime = Date.now();
         } else {
           item.stopTime = Date.now();
+          item.timeSpent = (item.stopTime - item.startTime)/1000;
         }
         console.log('start doing');
       }

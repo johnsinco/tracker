@@ -20,12 +20,11 @@ class Items extends Component {
   }
 
   createTasks(item) {
-console.log(item);
     const isDoing = item.doing;
     const timer = isDoing ? (
       <Timer stopHours={1} />
     ) : (
-      <div></div>
+      <div>time: {item.timeSpent}</div>
     );
     return <li
               key={item.key}>
