@@ -15,19 +15,26 @@ class Items extends Component {
     this.props.markDone(key);
   }
 
-  startTimer(key) {
+  toggleDoing(key) {
     this.props.toggleDoing(key);
   }
 
   createTasks(item) {
+console.log(item);
+    const isDoing = item.doing;
+    const timer = isDoing ? (
+      <Timer stopHours={1} />
+    ) : (
+      <div></div>
+    );
     return <li
               key={item.key}>
                 {item.text}
                 {item.done && <span>&nbsp; &#9989;</span>}
-                <Button bsSize="small">Start</Button>
-                <Button bsSize="small" onClick={() => this.stopTimer(item.key)}>Stop</Button>
+                <Button bsSize="small" onClick={() => this.toggleDoing(item.key)}>Start</Button>
+                <Button bsSize="small" onClick={() => this.toggleDoing(item.key)}>Stop</Button>
                 <Button bsSize="small" onClick={() => this.markDone(item.key)}>Done</Button>
-                <Timer stopHours={1} />
+                {timer}
            </li>
   }
 

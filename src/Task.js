@@ -11,6 +11,7 @@ class Task extends Component {
     }
     this.addItem = this.addItem.bind(this);
     this.markDone = this.markDone.bind(this);
+    this.toggleDoing = this.toggleDoing.bind(this);
   }
 
   addItem(event) {
@@ -63,6 +64,7 @@ class Task extends Component {
         } else {
           item.stopTime = Date.now();
         }
+        console.log('start doing');
       }
     });
     this.setState(() => {return {items: updatedItems}});
@@ -80,7 +82,7 @@ class Task extends Component {
           </form>
         </div>
         <Items entries={this.state.items}
-                markDone={this.markDone}/>
+                markDone={this.markDone} toggleDoing={this.toggleDoing} />
       </div>
     );
   }
